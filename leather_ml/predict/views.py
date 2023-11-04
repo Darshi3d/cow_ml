@@ -77,7 +77,7 @@ def upload(request):
             print(class_names[inde])
             class_names[inde] = class_names[inde].replace("_", " ")
             res = class_names[inde]
-            score = tf.nn.softmax(predictions[0])
+            score = predictions[0]
             content = "This image belongs to the class {} and with the confidence rate of {:.2f}%.".format(
             class_names[inde], 100 * np.max(score))
             temp.append(url)
@@ -85,10 +85,11 @@ def upload(request):
             temp.append(content)
             dat.append(temp)
             # print(dat)
-            te_dat = list(dat[0])
-            context = {"dat":dat}
+            te_dat = dat[0].copy()
+            des = "/workspaces/cow_ml/leather_ml/media/{}/output/output.csv".format(str(u))
+            context = {"dat":dat,"des":des}
             # print(te_dat)
-            # te_dat[0] = te_dat[0].split("/")[-1].split(".")[0]
+            te_dat[0] = te_dat[0].split("/")[-1]
             te_dat[2] = "{:.2f}%".format(100 * np.max(score))
             df = pd.DataFrame([te_dat],columns=["Image","Type","Percentage"])
             df.to_csv("media/{}/output/output.csv".format(str(u)))
@@ -121,20 +122,23 @@ def upload(request):
                         print(class_names[inde])
                         class_names[inde] = class_names[inde].replace("_", " ")
                         res = class_names[inde]
-                        score = tf.nn.softmax(predictions[0])
+                        score = predictions[0]
                         content = "This image belongs to the class {} and with the confidence rate of {:.2f}%.".format(
                         class_names[inde], 100 * np.max(score))
                         temp.append(url)
                         temp.append(res)
                         temp.append(content)
                         dat.append(temp)
-                data_csv = list(dat)
+                data_csv = []
                 # data_csv = data_csv[0]
-                context = {"dat":dat}
+                des = "/workspaces/cow_ml/leather_ml/media/{}/output/output.csv".format(str(u))
+                context = {"dat":dat,"des":des}
                 print(dat)
-                # for i in range(0,len(data_csv)):
-                #     data_csv[i][0] = data_csv[i][0].split("/")[-1].split(".")[0]
-                #     data_csv[i][2] = data_csv[i][2].split("and with the confidence rate of")[-1].split(".")[0]
+                for i in range(0,len(dat)):
+                    temp = dat[i].copy()
+                    data_csv.append(temp)
+                    data_csv[i][0] = data_csv[i][0].split("/")[-1]
+                    data_csv[i][2] = data_csv[i][2].split("and with the confidence rate of")[-1]
                 df = pd.DataFrame(data_csv,columns=["Image","Type","Percentage"])
                 df.to_csv("media/{}/output/output.csv".format(str(u)))
 
