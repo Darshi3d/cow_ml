@@ -1,3 +1,11 @@
 passing value from one view to another in django
 
 https://www.youtube.com/watch?v=PSAayeed-gU
+
+integrating tailwind with django
+
+https://www.youtube.com/watch?v=lsQVukhwpqQ
+
+copy tw folder from static, static/css/tw.css
+
+and tailwind.config.js this should work
