@@ -144,6 +144,53 @@ def upload(request):
 
             elif filename.endswith("rar"):
                 print("rar")
+                urlname = fs.save(str(u)+"/"+filename, uploaded_file)
+                time.sleep(3)
+                os.system("unrar e media/{}/{} -o media/{}/input/".format(str(u),filename,str(u)))
+                directory = "/workspaces/cow_ml/leather_ml/media/{}/input/".format(str(u))
+                for filename in os.scandir(directory):
+                    if filename.is_file():
+                        os.rename(filename.path,filename.path.replace(" ","_"))
+                for filename in os.scandir(directory):
+                    if filename.is_file():
+                        temp  = []
+                        url = filename.path
+                        print(url)
+                        img = image.load_img(url, target_size=(256, 256))
+                        # Convert Image to a numpy array
+                        img = image.img_to_array(img, dtype=np.uint8)
+                        # Scaling the Image Array values between 0 and 1
+                        img = np.array(img)/255.0
+                        class_names = ['Bad Skin', 'Normal Skin']
+                        data = json.dumps({"signature_name": "serving_default",
+                              "instances": img[np.newaxis, ...].tolist()})
+                        # print('Data: {} ... {}'.format(data[:50], data[len(data)-52:]))
+                        predictions = predict(data)
+                        inde = predictions[0].index(max(predictions[0]))
+                        print(class_names[inde])
+                        class_names[inde] = class_names[inde].replace("_", " ")
+                        res = class_names[inde]
+                        score = predictions[0]
+                        content = "This image belongs to the class {} and with the confidence rate of {:.2f}%.".format(
+                        class_names[inde], 100 * np.max(score))
+                        temp.append(url)
+                        temp.append(res)
+                        temp.append(content)
+                        dat.append(temp)
+                data_csv = []
+                # data_csv = data_csv[0]
+                des = "/workspaces/cow_ml/leather_ml/media/{}/output/output.csv".format(str(u))
+                context = {"dat":dat,"des":des}
+                print(dat)
+                for i in range(0,len(dat)):
+                    temp = dat[i].copy()
+                    data_csv.append(temp)
+                    data_csv[i][0] = data_csv[i][0].split("/")[-1]
+                    data_csv[i][2] = data_csv[i][2].split("and with the confidence rate of")[-1]
+                df = pd.DataFrame(data_csv,columns=["Image","Type","Percentage"])
+                df.to_csv("media/{}/output/output.csv".format(str(u)))
+                
+
             elif filename.endswith(".tar.gz"):
                 print(".tar.gz")
             else:
