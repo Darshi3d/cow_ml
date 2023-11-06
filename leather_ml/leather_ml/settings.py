@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
+    # "tailwindcss",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
@@ -136,3 +137,11 @@ MEDIA_URL = os.path.join(BASE_DIR,'media/')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# #tailwind
+# TAILWINDCSS_CLI_FILE = BASE_DIR / 'tailwindcss-linux-x64'
+# TAILWINDCSS_CONFIG_FILE = BASE_DIR / 'tailwind.config.js'
+
+# # For file mode
+# TAILWINDCSS_OUTPUT_FILE = 'style.css'

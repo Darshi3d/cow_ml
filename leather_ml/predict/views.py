@@ -1,5 +1,5 @@
 import tensorflow as tf
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.core.files.storage import FileSystemStorage
 from django.views.decorators.csrf import csrf_exempt
@@ -250,7 +250,7 @@ def upload(request):
         else:
             messages.error(
                 request, "Check the uploaded file must either be an image or a compressed folder containing image!")
-            return render(request, "index.html")
+            return redirect(index)
 
 
     return render(request, "result.html", context)

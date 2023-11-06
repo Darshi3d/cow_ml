@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,6 +7,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>upload</title>
+	<link rel="stylesheet" href="{% static 'css/tw.css' %}">
 	<style>
 		body {
 			background: rgba(0, 0, 0, 0.9);
@@ -98,12 +100,14 @@
 </head>
 
 <body>
+
 <div class="whole">
 	<form action="upload" method='post' enctype="multipart/form-data">
 		{% csrf_token %}
 		<input type="file" name="pic" lang="es" required>
 		<p>Drag your files here or click in this area.</p>
-		<button type="submit" onclick="spinner()">Upload</button>
+		<br>
+		<button type="submit" onclick="spinner()" class="tw-text-[#00ffff]">Upload</button>
 	</form>
 	{% for message in messages %}
     {% if message.tags == 'error' %}
