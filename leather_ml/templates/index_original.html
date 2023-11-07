@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>upload</title>
+	<link rel="stylesheet" href="{% static 'css/tw.css' %}">
+	<link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+
+<body>
+
+<div class="whole">
+	<form action="upload" method='post' enctype="multipart/form-data">
+		{% csrf_token %}
+		<input type="file" name="pic" lang="es" required>
+		<p>Drag your files here or click in this area.</p>
+		<br>
+		<button type="submit" onclick="spinner()" class="tw-text-[#00ffff]">Upload</button>
+	</form>
+	{% for message in messages %}
+    {% if message.tags == 'error' %}
+    <p class="form_error text-danger"
+    style="font-size: 13px; font-style:italic; font-family: open serif; text-align:center ;color: red;" >
+    {{message}}</p>
+    {% endif %}
+	{% endfor %}
+</div>
+<div class="loader">
+	<div class="loading">
+	</div>
+  </div>
+
+</body>
+<script type="text/javascript">
+    function spinner() {
+        document.getElementsByClassName("loader")[0].style.display = "block";
+		document.getElementsByClassName("whole")[0].style.display="none";
+    }
+	$(document).ready(function () {
+		$('form input').change(function () {
+			$('form p').text(this.files.length + " file(s) selected");
+		});
+	});
+</script>  
+</html>
