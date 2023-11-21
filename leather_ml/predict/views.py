@@ -13,6 +13,7 @@ import pandas as pd
 import json
 import re
 from django.contrib import messages
+from django.views.decorators.cache import never_cache
 from tensorflow.python.ops.numpy_ops import np_config
 import requests
 from tensorflow.keras.preprocessing import image
@@ -24,13 +25,13 @@ np_config.enable_numpy_behavior()
 # Create your views here.
 path = ""
 
-
+@never_cache
 def index(request):
     request.session["uuid"] = str(uuid.uuid4())
     print(request.session["uuid"])
     return render(request, 'index.html')
 
-
+@never_cache
 def predict(data):
     headers = {"content-type": "application/json"}
     json_response = requests.post(
@@ -40,7 +41,7 @@ def predict(data):
     return predictions
 
 
-
+@never_cache
 @csrf_exempt
 def upload(request):
     if request.method == "POST":

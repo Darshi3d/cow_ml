@@ -389,7 +389,3 @@ h1 {
   font-size: calc(var(--normal-font-size) + .5rem);
 }
 
-p.form_error.text-danger{
-  min-height: 20px;
-  margin-bottom: 0px !important;
-}

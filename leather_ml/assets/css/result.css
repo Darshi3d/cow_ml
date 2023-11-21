@@ -1,15 +1,18 @@
 @keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
+/* 
 .btn {
     color: #101832;
     cursor: pointer;
@@ -139,4 +142,50 @@
   }
   .bg:hover:before, .bg:hover:after {
     background: #101832;
+  } */
+
+
+  .container .buttons {
+    display: flex;
+    flex-direction: column;
+  }
+  .container a {
+    padding: 15px 20px;
+    font: 13px "Montserrat", sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    margin: 1em;
+  }
+  .container a:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+  }
+  @media (min-width: 417px) and (max-width: 567px) {
+    .container a {
+      padding: 15px 30px;
+      font: 16px "Montserrat", sans-serif;
+    }
+  }
+  @media (min-width: 568px) {
+    .container a {
+      padding: 15px 50px;
+      font: 20px "Montserrat", sans-serif;
+    }
+  }
+  
+  .button2 {
+    color: black;
+    background-color: #10FFB4;
+    transition: 0.2s ease-in-out;
+    border-left: 3px transparent solid;
+    border-right: 3px transparent solid;
+  }
+  
+  .button2:hover {
+    color: #10FFB4;
+    background-color: black;
+    border-left: #10FFB4 3px solid;
+    border-right: #10FFB4 3px solid;
   }
