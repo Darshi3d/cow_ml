@@ -1,27 +1,29 @@
 nohup: ignoring input
-2023-11-21 09:01:02.754329: I tensorflow_serving/model_servers/server.cc:89] Building single TensorFlow model file config:  model_name: fashion_model model_base_path: /workspaces/cow_ml/model/
-2023-11-21 09:01:02.756880: I tensorflow_serving/model_servers/server_core.cc:465] Adding/updating models.
-2023-11-21 09:01:02.756958: I tensorflow_serving/model_servers/server_core.cc:594]  (Re-)adding model: fashion_model
-2023-11-21 09:01:02.873020: I tensorflow_serving/core/basic_manager.cc:740] Successfully reserved resources to load servable {name: fashion_model version: 1}
-2023-11-21 09:01:02.873123: I tensorflow_serving/core/loader_harness.cc:66] Approving load for servable version {name: fashion_model version: 1}
-2023-11-21 09:01:02.873163: I tensorflow_serving/core/loader_harness.cc:74] Loading servable version {name: fashion_model version: 1}
-2023-11-21 09:01:02.874850: I external/org_tensorflow/tensorflow/cc/saved_model/reader.cc:43] Reading SavedModel from: /workspaces/cow_ml/model/1
-2023-11-21 09:01:03.033095: I external/org_tensorflow/tensorflow/cc/saved_model/reader.cc:78] Reading meta graph with tags { serve }
-2023-11-21 09:01:03.039842: I external/org_tensorflow/tensorflow/cc/saved_model/reader.cc:119] Reading SavedModel debug info (if present) from: /workspaces/cow_ml/model/1
-2023-11-21 09:01:03.040494: I external/org_tensorflow/tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+2023-11-23 09:38:36.271329: I tensorflow_serving/model_servers/server.cc:89] Building single TensorFlow model file config:  model_name: fashion_model model_base_path: /workspaces/cow_ml/model/
+2023-11-23 09:38:36.331792: I tensorflow_serving/model_servers/server_core.cc:465] Adding/updating models.
+2023-11-23 09:38:36.332028: I tensorflow_serving/model_servers/server_core.cc:594]  (Re-)adding model: fashion_model
+2023-11-23 09:38:36.376814: I tensorflow_serving/core/basic_manager.cc:740] Successfully reserved resources to load servable {name: fashion_model version: 1}
+2023-11-23 09:38:36.378084: I tensorflow_serving/core/loader_harness.cc:66] Approving load for servable version {name: fashion_model version: 1}
+2023-11-23 09:38:36.378237: I tensorflow_serving/core/loader_harness.cc:74] Loading servable version {name: fashion_model version: 1}
+2023-11-23 09:38:36.393745: I external/org_tensorflow/tensorflow/cc/saved_model/reader.cc:43] Reading SavedModel from: /workspaces/cow_ml/model/1
+2023-11-23 09:38:36.630996: I external/org_tensorflow/tensorflow/cc/saved_model/reader.cc:78] Reading meta graph with tags { serve }
+2023-11-23 09:38:36.631261: I external/org_tensorflow/tensorflow/cc/saved_model/reader.cc:119] Reading SavedModel debug info (if present) from: /workspaces/cow_ml/model/1
+2023-11-23 09:38:36.633609: I external/org_tensorflow/tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
 To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
-2023-11-21 09:01:03.413858: I external/org_tensorflow/tensorflow/cc/saved_model/loader.cc:228] Restoring SavedModel bundle.
-2023-11-21 09:01:03.660571: E external/org_tensorflow/tensorflow/core/grappler/optimizers/meta_optimizer.cc:828] tfg_optimizer{} failed: NOT_FOUND: Op type not registered 'DisableCopyOnRead' in binary running on codespaces-b0ef17. Make sure the Op and Kernel are registered in the binary running in this process. Note that if you are loading a saved graph which used ops from tf.contrib, accessing (e.g.) `tf.contrib.resampler` should be done before importing the graph, as contrib ops are lazily registered when the module is first accessed.
+2023-11-23 09:38:37.055628: I external/org_tensorflow/tensorflow/cc/saved_model/loader.cc:228] Restoring SavedModel bundle.
+2023-11-23 09:38:37.421046: E external/org_tensorflow/tensorflow/core/grappler/optimizers/meta_optimizer.cc:828] tfg_optimizer{} failed: NOT_FOUND: Op type not registered 'DisableCopyOnRead' in binary running on codespaces-b0ef17. Make sure the Op and Kernel are registered in the binary running in this process. Note that if you are loading a saved graph which used ops from tf.contrib, accessing (e.g.) `tf.contrib.resampler` should be done before importing the graph, as contrib ops are lazily registered when the module is first accessed.
 	when importing GraphDef to MLIR module in GrapplerHook
-2023-11-21 09:01:04.180322: I external/org_tensorflow/tensorflow/cc/saved_model/loader.cc:212] Running initialization op on SavedModel bundle at path: /workspaces/cow_ml/model/1
-2023-11-21 09:01:04.323220: E external/org_tensorflow/tensorflow/core/grappler/optimizers/meta_optimizer.cc:828] tfg_optimizer{} failed: NOT_FOUND: Op type not registered 'DisableCopyOnRead' in binary running on codespaces-b0ef17. Make sure the Op and Kernel are registered in the binary running in this process. Note that if you are loading a saved graph which used ops from tf.contrib, accessing (e.g.) `tf.contrib.resampler` should be done before importing the graph, as contrib ops are lazily registered when the module is first accessed.
+2023-11-23 09:38:38.111137: I external/org_tensorflow/tensorflow/cc/saved_model/loader.cc:212] Running initialization op on SavedModel bundle at path: /workspaces/cow_ml/model/1
+2023-11-23 09:38:38.283233: E external/org_tensorflow/tensorflow/core/grappler/optimizers/meta_optimizer.cc:828] tfg_optimizer{} failed: NOT_FOUND: Op type not registered 'DisableCopyOnRead' in binary running on codespaces-b0ef17. Make sure the Op and Kernel are registered in the binary running in this process. Note that if you are loading a saved graph which used ops from tf.contrib, accessing (e.g.) `tf.contrib.resampler` should be done before importing the graph, as contrib ops are lazily registered when the module is first accessed.
 	when importing GraphDef to MLIR module in GrapplerHook
-2023-11-21 09:01:04.365596: I external/org_tensorflow/tensorflow/cc/saved_model/loader.cc:301] SavedModel load for tags { serve }; Status: success: OK. Took 1490741 microseconds.
-2023-11-21 09:01:04.381022: I tensorflow_serving/servables/tensorflow/saved_model_warmup_util.cc:59] No warmup data file found at /workspaces/cow_ml/model/1/assets.extra/tf_serving_warmup_requests
-2023-11-21 09:01:04.396755: I tensorflow_serving/core/loader_harness.cc:87] Successfully loaded servable version {name: fashion_model version: 1}
-2023-11-21 09:01:04.397626: I tensorflow_serving/model_servers/server_core.cc:486] Finished adding/updating models
-2023-11-21 09:01:04.397827: I tensorflow_serving/model_servers/server.cc:133] Using InsecureServerCredentials
-2023-11-21 09:01:04.398025: I tensorflow_serving/model_servers/server.cc:391] Profiler service is enabled
-2023-11-21 09:01:04.399385: I tensorflow_serving/model_servers/server.cc:417] Running gRPC ModelServer at 0.0.0.0:8500 ...
-2023-11-21 09:01:04.400658: I tensorflow_serving/model_servers/server.cc:438] Exporting HTTP/REST API at:localhost:8502 ...
+2023-11-23 09:38:38.326357: I external/org_tensorflow/tensorflow/cc/saved_model/loader.cc:301] SavedModel load for tags { serve }; Status: success: OK. Took 1932608 microseconds.
+2023-11-23 09:38:38.338226: I tensorflow_serving/servables/tensorflow/saved_model_warmup_util.cc:59] No warmup data file found at /workspaces/cow_ml/model/1/assets.extra/tf_serving_warmup_requests
+2023-11-23 09:38:38.351912: I tensorflow_serving/core/loader_harness.cc:87] Successfully loaded servable version {name: fashion_model version: 1}
+2023-11-23 09:38:38.352705: I tensorflow_serving/model_servers/server_core.cc:486] Finished adding/updating models
+2023-11-23 09:38:38.354231: I tensorflow_serving/model_servers/server.cc:133] Using InsecureServerCredentials
+2023-11-23 09:38:38.354322: I tensorflow_serving/model_servers/server.cc:391] Profiler service is enabled
+2023-11-23 09:38:38.359256: I tensorflow_serving/model_servers/server.cc:417] Running gRPC ModelServer at 0.0.0.0:8500 ...
+2023-11-23 09:38:38.360781: I tensorflow_serving/model_servers/server.cc:438] Exporting HTTP/REST API at:localhost:8502 ...
 [evhttp_server.cc : 245] NET_LOG: Entering the event loop ...
+2023-11-23 10:56:00.566933: E external/org_tensorflow/tensorflow/core/grappler/optimizers/meta_optimizer.cc:828] tfg_optimizer{} failed: NOT_FOUND: Op type not registered 'DisableCopyOnRead' in binary running on codespaces-b0ef17. Make sure the Op and Kernel are registered in the binary running in this process. Note that if you are loading a saved graph which used ops from tf.contrib, accessing (e.g.) `tf.contrib.resampler` should be done before importing the graph, as contrib ops are lazily registered when the module is first accessed.
+	when importing GraphDef to MLIR module in GrapplerHook

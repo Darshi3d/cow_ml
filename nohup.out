@@ -1,0 +1,2 @@
+Failed to start server. Error: INVALID_ARGUMENT: Both server_options.model_base_path and server_options.model_config_file are empty!
+Failed to start server. Error: INVALID_ARGUMENT: Both server_options.model_base_path and server_options.model_config_file are empty!

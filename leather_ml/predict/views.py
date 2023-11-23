@@ -31,7 +31,7 @@ def index(request):
     print(request.session["uuid"])
     return render(request, 'index.html')
 
-@never_cache
+
 def predict(data):
     headers = {"content-type": "application/json"}
     json_response = requests.post(
@@ -55,7 +55,7 @@ def upload(request):
         fs = FileSystemStorage()
         f1_name = uploaded_file.name
         filename = uploaded_file.name.replace(" ", "_")
-        if (re.search(re.compile("([^\\s]+(\\.(?i)(jpeg|jpg|png|gif|bmp))$)"), filename)):
+        if (re.search(re.compile("([^\\s]+(\\.(?i)(jpeg|jpg|png|bmp))$)"), filename)):
             temp = []
             # print(filename)
             urlname = fs.save(str(u)+"/"+filename, uploaded_file)
@@ -72,7 +72,7 @@ def upload(request):
             class_names = ['Bad Skin', 'Normal Skin']
             data = json.dumps({"signature_name": "serving_default",
                               "instances": img[np.newaxis, ...].tolist()})
-            # print('Data: {} ... {}'.format(data[:50], data[len(data)-52:]))
+            print('Data: {} ... {}'.format(data[:50], data[len(data)-52:]))
             predictions = predict(data)
             inde = predictions[0].index(max(predictions[0]))
             print(class_names[inde])
@@ -254,4 +254,44 @@ def upload(request):
             return redirect(index)
 
 
+    return render(request, "result.html", context)
+
+def logs(request):
+    directory = "/workspaces/cow_ml/leather_ml/media/"
+    dat = []
+    for filename in os.scandir(directory):
+        if filename.is_file():
+            continue
+        else:
+            dat.append(str(filename.name))
+    
+    context = {"dat":dat}
+    return render(request, "logs.html",context)
+
+def result(request,id):
+    u = id
+    try:
+        res = pd.read_csv("/workspaces/cow_ml/leather_ml/media/{}/output/output.csv".format(u))
+    except:
+        return HttpResponse("<h1>No outputs for the id</h1>")
+    if len(res)==1:
+        des = "/workspaces/cow_ml/leather_ml/media/{}/output/output.csv".format(u)
+        dat = []
+        img = "/workspaces/cow_ml/leather_ml/media/{}/{}".format(u,res["Image"][0])
+        typ = res["Type"][0]
+        content = "This image belongs to the class {} and with the confidence rate of {}.".format(
+        res["Type"][0], res["Percentage"][0])
+        dat.append([img,typ,content])
+        context = {"dat": dat,"des":des}
+        return render(request, "result.html", context)
+    else:
+        dat = []
+        for i in range(0,len(res)):
+            des = "/workspaces/cow_ml/leather_ml/media/{}/output/output.csv".format(u)
+            img = "/workspaces/cow_ml/leather_ml/media/{}/input/{}".format(str(u),res["Image"][i])
+            typ = res["Type"][i]
+            content = "This image belongs to the class {} and with the confidence rate of {}.".format(
+            res["Type"][i], res["Percentage"][i])
+            dat.append([img,typ,content])
+        context = {"dat": dat,"des":des}
     return render(request, "result.html", context)

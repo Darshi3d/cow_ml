@@ -1,0 +1,30 @@
+body {
+    background: #000000 !important;
+  }
+
+main{
+    min-height: 80vh;
+    padding: 2%;
+  }
+
+  nav .nav-link {
+    color: #00fac0;
+  }
+  
+  nav .nav-link:hover {
+    color: #ffffff;
+  }
+  
+  .navbar-brand.text-light:hover {
+    color: #00fa92 !important;
+  }
+
+main div h1,
+main div ul li{
+
+  color: aliceblue;
+}
+
+main div ul li:hover{
+  color:#00fa92;
+}
